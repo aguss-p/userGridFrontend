@@ -1,31 +1,18 @@
 import * as React from 'react';
-import type { HeadFC, PageProps } from 'gatsby';
-import {
-    Box,
-    Button,
-    Card,
-    Container,
-    Switch,
-    Theme,
-    ThemeProvider,
-    Typography,
-    createTheme,
-} from '@mui/material';
+import { Switch, Theme, ThemeProvider, Typography, createTheme } from '@mui/material';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import darkTheme from '../utils/theme/darkTheme';
 import lightTheme from '../utils/theme/lightTheme';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { useTheme } from '@emotion/react';
 import Grid from '../commons/Grid';
-import { ActionColumn } from '../types/commons/CommonGridFormModal.types';
 import VisibilityRoundedIcon from '@mui/icons-material/VisibilityRounded';
 import Edit from '@mui/icons-material/Edit';
 import { Add, DarkMode, DeleteOutline, LightMode } from '@mui/icons-material';
 import St from '../commons/StyledComponents/CommonStyledComponents.styled';
 import CustomGridAction from '../commons/Grid/CustomGridAction';
-import { useDeleteUser } from '../hooks/api/users.hook';
 import UserForm from '../commons/UserForm';
 import DeleteUserModal from '../commons/DeleteUserModal';
+import { useGetUsers } from '../hooks/api/users.hook';
 
 // import backgroundImg from "../assets/img/backgroundImg.jpeg";
 
@@ -64,6 +51,7 @@ const UsersPage: React.FC<{ props: Props }> = ({ props }: { props: Props }) => {
                             extraActionsInHeader={headerActions}
                             needRefetch={needRefetch}
                             setNeedRefetch={setNeedRefetch}
+                            fetchHook={useGetUsers}
                         />
                     </St.GridWrapper>
                 </QueryClientProvider>

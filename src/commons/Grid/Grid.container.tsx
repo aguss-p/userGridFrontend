@@ -7,9 +7,9 @@ import CustomTableAction from './CustomGridAction';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 const GridContainer = (props: Props) => {
-    const { columns, customActionColumns, setNeedRefetch, needRefetch } = props;
+    const { columns, customActionColumns, setNeedRefetch, needRefetch, fetchHook } = props;
     const today = new Date();
-    const { data, isLoading, refetch, setSearchText, dataUpdatedAt } = useGetUsers();
+    const { data, isLoading, refetch, setSearchText, dataUpdatedAt } = fetchHook();
     const [localLoading, setLocalLoading] = useState(false);
     useEffect(() => {
         if (needRefetch) {
@@ -17,6 +17,7 @@ const GridContainer = (props: Props) => {
             setNeedRefetch(false);
         }
     }, [needRefetch]);
+
     // este useEffect es unicamente para que no sea tan inmediata y quede mal el loader
     useEffect(() => {
         const delayLoader = async (time: number) => {
@@ -87,6 +88,13 @@ interface Props {
     extraActionsInHeader?: ActionHeader[];
     needRefetch: boolean;
     setNeedRefetch: Dispatch<SetStateAction<boolean>>;
+    fetchHook: () => {
+        data: any;
+        isLoading: boolean;
+        refetch: Function;
+        setSearchText: Function;
+        dataUpdatedAt: number;
+    };
 }
 
 export default GridContainer;
