@@ -4,7 +4,7 @@ export default {
     SearchStyled: styled('div')(({ theme }) => ({
         backgroundColor: alpha(theme.palette.common.white, 0.15),
         borderRadius: theme.shape.borderRadius,
-        border: `solid 1px rgb(145, 158, 171)`,
+        border: `solid 1px ${theme.palette.common.black}`,
         marginLeft: 0,
         minWidth: '120px',
         position: 'relative',
@@ -13,12 +13,12 @@ export default {
         },
     })),
     SearchIconWrapper: styled('div')(({ theme }) => ({
-        color: 'rgb(145, 158, 171)',
+        color: theme.palette.primary.main,
         alignItems: 'center',
         display: 'flex',
         height: '100%',
         justifyContent: 'center',
-        padding: theme.spacing(0, 2),
+        paddingLeft: '0.7rem',
         pointerEvents: 'none',
         position: 'absolute',
     })),
@@ -29,10 +29,11 @@ export default {
             paddingLeft: `calc(1em + ${theme.spacing(3)})`,
             paddingTop: '3%',
             alignSelf: 'center',
-            transition: theme.transitions.create('width'),
+            color: theme.palette.common.black,
+
             '&::placeholder': {
                 textOverflow: 'ellipsis !important',
-                color: 'rgb(145, 158, 171)',
+                color: theme.palette.common.black,
             },
             width: '100%',
         },

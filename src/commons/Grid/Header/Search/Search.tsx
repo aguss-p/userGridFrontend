@@ -4,7 +4,6 @@ import St from './Search.styled';
 
 const Search = (props: Props) => {
     const { disabled, handleSearchChange } = props;
-
     return (
         <St.SearchStyled>
             <St.SearchIconWrapper>
