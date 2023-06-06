@@ -7,7 +7,7 @@ export interface CustomIconProps {
 }
 export interface ActionColumn {
     id: string;
-    title:string;
+    title: string;
     component?: FunctionComponent;
     icon: (props: CustomIconProps) => JSX.Element;
     width?: string | { [key: string]: string };

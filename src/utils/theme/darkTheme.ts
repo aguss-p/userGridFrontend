@@ -4,8 +4,8 @@ import { CustomThemeOptions } from '../../types/theme/theme.types';
 
 const theme = createTheme({
     palette: {
-        text:{
-            color:"#ffffff",
+        text: {
+            color: '#ffffff',
         },
         shadows: {
             default: indigo[800],
@@ -14,19 +14,18 @@ const theme = createTheme({
             main: red.A400,
         },
         primary: {
-            main: "rgb(187,134,252)",
+            main: 'rgb(187,134,252)',
         },
         secondary: {
             main: cyan[600],
         },
-        common:{
-            white:"#454545",
-            black:"#F7F7F7"
-        }
+        common: {
+            white: '#454545',
+            black: '#F7F7F7',
+        },
         // background:{
         //     paper:"darkblack",
         // },
-        
     },
     typography: {
         fontFamily: [
@@ -40,7 +39,6 @@ const theme = createTheme({
             'sans-serif',
         ].join(','),
     },
-    
 } as CustomThemeOptions);
 
 export default responsiveFontSizes(theme);

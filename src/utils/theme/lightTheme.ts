@@ -5,8 +5,8 @@ import { CustomThemeOptions } from '../../types/theme/theme.types';
 
 const theme = createTheme({
     palette: {
-        text:{
-            color:"#121212",
+        text: {
+            color: '#121212',
         },
         background: {
             default: deepOrange[800],
@@ -15,18 +15,18 @@ const theme = createTheme({
             main: red.A400,
         },
         action: {
-            hover:red[900]
+            hover: red[900],
         },
         primary: {
-            main: "#235A64",
+            main: '#235A64',
         },
         secondary: {
             main: orange[600],
         },
-        common:{
-            white:"#ffffff",
-            black:"#000000"
-        }
+        common: {
+            white: '#ffffff',
+            black: '#000000',
+        },
     },
     typography: {
         fontFamily: [
@@ -40,8 +40,6 @@ const theme = createTheme({
             'sans-serif',
         ].join(','),
     },
-
-   
 } as CustomThemeOptions);
 
 export default responsiveFontSizes(theme);
