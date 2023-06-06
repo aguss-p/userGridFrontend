@@ -11,7 +11,7 @@ export default {
     ActionButton: styled(LoadingButton)(({ theme }) => ({
         padding: '4px 10px 4px 10px',
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.common.black,
+        color: '#F7F7F7',
         borderRadius: '2rem',
     })),
     ModalContent: styled('div')(({ theme }) => ({})),

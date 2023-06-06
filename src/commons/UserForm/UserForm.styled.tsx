@@ -30,7 +30,7 @@ export default {
         theme.unstable_sx({
             width: { xs: '100%', sm: 'auto' },
             backgroundColor: theme.palette.primary.main,
-            color: theme.palette.common.black,
+            color: '#F7F7F7',
             borderRadius: '2rem',
             padding: '4px 10px 4px 10px',
         }),

@@ -60,7 +60,7 @@ const UsersPage: React.FC<{ props: Props }> = ({ props }: { props: Props }) => {
     );
 };
 const UsersPageContainer: React.FC<{}> = () => {
-    const [darkMode, setDarkMode] = useState<boolean>(false);
+    const [darkMode, setDarkMode] = useState<boolean>(true);
     const [needRefetch, setNeedRefetch] = useState<boolean>(false);
     const queryClient: QueryClient = new QueryClient();
 

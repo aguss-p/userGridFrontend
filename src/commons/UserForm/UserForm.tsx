@@ -16,7 +16,6 @@ const UserForm = (props: Props) => {
     } = props;
     const theme = useTheme();
     const { errors, values, setFieldValue, setErrors } = formik;
-    console.log('errores', errors);
 
     return (
         <>

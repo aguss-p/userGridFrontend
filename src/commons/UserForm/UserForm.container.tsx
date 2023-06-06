@@ -41,7 +41,6 @@ const UserFormContainer = (props: Props) => {
         id: id ?? '',
         enable: isEdit || isDetail,
     });
-    console.log(data, 'data');
 
     const telefonoRegex = /[a-zA-Z-/?¿!|"#$%&/()=*]/;
     const {
