@@ -5,6 +5,7 @@ import CustomLoader from '../CustomLoader';
 import Header from './Header';
 import { ActionHeader } from '../../types/commons/CommonGridFormModal.types';
 import { Box, Chip } from '@mui/material';
+import { TableColumn } from 'react-data-table-component';
 
 const Grid = (props: Props) => {
     const { data, columns, isLoading, refetch, title, extraActionsInHeader, handleSearchChange } =
@@ -58,16 +59,13 @@ const Grid = (props: Props) => {
 Grid.defaultProps = {};
 
 interface Props {
-    data: Array<any>;
-    columns: any;
+    data: Array<unknown>;
+    columns: TableColumn<unknown>[];
     isLoading: boolean;
-    refetch: any;
+    refetch: Function;
     title: string;
     extraActionsInHeader?: ActionHeader[];
     handleSearchChange: (e: any) => void;
-    // handleSort: (column: any, sortDirection: string) => void;
-    // handlePageChange: (pag: number) => void;
-    // tableHeader: ReactElement<any, any>;
 }
 
 export default Grid;

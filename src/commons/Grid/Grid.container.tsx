@@ -33,7 +33,7 @@ const GridContainer = (props: Props) => {
     }, [isLoading]);
     const handleSearchChange = async (e: any) => {
         setTimeout(() => {
-            setSearchText(e.target.value);
+            setSearchText(e?.target?.value);
         }, 1000);
     };
 

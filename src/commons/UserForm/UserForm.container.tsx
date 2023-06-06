@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { FormikValues, useFormik } from 'formik';
 import { useCreateUser, useGetUserById, useUpdateUser } from '../../hooks/api/users.hook';
 import { Dispatch, SetStateAction } from 'react';
+import { User } from '../../types/users/Users.types';
 // import { useCreateUser, useGetUserByUsername, useUpdateUser } from 'hooks/api/users.hook';
 const getInitialValues = (data?: any) => ({
     username: data?.username ?? '',
@@ -58,8 +59,8 @@ const UserFormContainer = (props: Props) => {
     } = useUpdateUser(config);
 
     const handleSubmit = (values: FormikValues) => {
-        if (isEdit) updateUser({ body: values, id });
-        else createUser(values as any);
+        if (isEdit) updateUser({ body: values, id } as { body: User; id: string });
+        else createUser(values as User);
     };
 
     const formikInitProps = React.useMemo(

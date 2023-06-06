@@ -48,7 +48,7 @@ interface Props {
         muiName: string;
     };
     loading: boolean;
-    refetch: any;
+    refetch: Function;
     title: string;
     extraActionsInHeader?: ActionHeader[];
     handleSearchChange: (e: any) => void;

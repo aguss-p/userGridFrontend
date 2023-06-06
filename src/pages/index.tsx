@@ -13,6 +13,8 @@ import CustomGridAction from '../commons/Grid/CustomGridAction';
 import UserForm from '../commons/UserForm';
 import DeleteUserModal from '../commons/DeleteUserModal';
 import { useGetUsers } from '../hooks/api/users.hook';
+import { ActionColumn, ActionHeader } from '../types/commons/CommonGridFormModal.types';
+import { User } from '../types/users/Users.types';
 
 // import backgroundImg from "../assets/img/backgroundImg.jpeg";
 
@@ -69,36 +71,31 @@ const UsersPageContainer: React.FC<{}> = () => {
         return currentTheme;
     }, [darkMode]);
 
-    const columns = [
+    const columns: Array<any> = [
         {
             id: 'username',
             name: 'username',
-            selector: (row: any) => row?.username,
+            selector: (row: User) => row?.username,
             sortField: 'id',
             sortable: true,
         },
         {
             id: 'email',
             name: 'email',
-            selector: (row: any) => row?.email,
+            selector: (row: User) => row?.email,
             sortField: 'email',
             sortable: true,
         },
         {
             id: 'telefono',
             name: 'telefono',
-            selector: (row: any) => row?.telefono,
-            cel: (row: any) => (
-                <Typography sx={{ color: 'red' }} fontFamily={'Roboto'}>
-                    mesi
-                </Typography>
-            ),
+            selector: (row: User) => row?.telefono,
             sortField: 'telefono',
             sortable: true,
         },
     ];
 
-    const actionColumns: any = [
+    const actionColumns: ActionColumn[] = [
         {
             id: 'detail-user',
             title: 'Detalle',
@@ -138,7 +135,7 @@ const UsersPageContainer: React.FC<{}> = () => {
             ),
         },
     ];
-    const headerActions: any[] = [
+    const headerActions: ActionHeader[] = [
         {
             id: 'users',
             component: () => (
@@ -172,8 +169,8 @@ const UsersPageContainer: React.FC<{}> = () => {
 
 interface Props {
     columns: Array<any>;
-    actionColumns: Array<any>;
-    headerActions: Array<any>;
+    actionColumns: ActionColumn[];
+    headerActions: ActionHeader[];
     darkMode: boolean;
     setDarkMode: Dispatch<SetStateAction<boolean>>;
     theme: Theme;

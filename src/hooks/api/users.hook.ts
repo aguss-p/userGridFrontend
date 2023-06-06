@@ -1,11 +1,6 @@
 import React, { useMemo, useState } from 'react';
-// import { userRequestsAdapter } from 'adapters/common/users.adapter';
 import endpoints from '../../api/users/users.api';
 import { useMutation, useQuery } from '@tanstack/react-query';
-// import { UserContext } from 'context/user.context';
-// import { GridHookParams } from 'types/common/CommonGrid/CommonGridFormModal.types';
-// import { GetUsersResponse } from 'types/users/users.api.types';
-// import { userDataAdapter, usersDataAdapter } from 'adapters/users/users.adapter';
 
 export const useGetUsers = () => {
     const [searchText, setSearchText] = useState('');
@@ -28,7 +23,7 @@ export const useDeleteUser = (id:string) => {
     );
     return { mutate:mutateAsync ,isLoading,isSuccess  };
 };
-export const useGetUserById = ({ id, enable }: any) => {
+export const useGetUserById = ({ id, enable }: {id:string,enable:boolean}) => {
     const { data, isFetching, isLoading, isFetched,status} = useQuery(
         ['user', id],
         () => endpoints.getUserById(id),

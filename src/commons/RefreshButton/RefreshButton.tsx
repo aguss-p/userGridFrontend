@@ -28,7 +28,7 @@ const RefreshButton = (props: Props) => {
 
 RefreshButton.defaultProps = {};
 interface Props {
-    refresh: (value: boolean) => void;
+    refresh: Function;
     disabled?: boolean;
 }
 

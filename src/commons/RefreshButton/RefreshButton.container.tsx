@@ -12,7 +12,7 @@ const RefreshButtonContainer = (props: Props) => {
 RefreshButtonContainer.defaultProps = {};
 
 interface Props {
-    refresh: (value: boolean) => void;
+    refresh: Function;
     disabled?: boolean;
 }
 
