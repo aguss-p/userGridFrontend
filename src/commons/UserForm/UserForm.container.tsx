@@ -1,28 +1,30 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import UserForm from './UserForm';
 import * as Yup from 'yup';
 import { FormikValues, useFormik } from 'formik';
 import { useCreateUser, useGetUserById, useUpdateUser } from '../../hooks/api/users.hook';
 import { Dispatch, SetStateAction } from 'react';
 // import { useCreateUser, useGetUserByUsername, useUpdateUser } from 'hooks/api/users.hook';
-const getInitialValues = (data?: any) => {
-    return {
-        username: data?.username ?? '',
-        email: data?.email ?? '',
-        telefono: data?.telefono ?? '',
-    };
-};
-const getValidationSchema = () => {
+const getInitialValues = (data?: any) => ({
+    username: data?.username ?? '',
+    email: data?.email ?? '',
+    telefono: data?.telefono ?? '',
+});
+const getValidationSchema = () =>
     Yup.object().shape({
         username: Yup.string()
+            .matches(/^[^\s]*$/, 'No pude contener espacios')
+            .matches(/^[a-zA-Z0-9\s]*$/, 'No pude contener caracteres especiales')
             .max(24, 'El nombre no puede exceder los 24 caracteres.')
             .required('Campo requerido'),
         email: Yup.string().email('Ingrese un email valido').required('Campo requerido'),
-        telefono: Yup.string().required('Campo requerido'),
+        telefono: Yup.string()
+            .matches(
+                /^(?:\+\d{1,3}\s?)?(?:\(\d{1,4}\)\s?)?\d{1,4}[-\s]?\d{1,9}[-\s]?\d{1,9}$/,
+                'Número de teléfono inválido',
+            )
+            .required('Campo requerido'),
     });
-};
-
 // ---------------------------------------------//
 // ---------------------------------------------//
 // ---------------------------------------------//
@@ -56,10 +58,10 @@ const UserFormContainer = (props: Props) => {
         isError: updateApiIsError,
     } = useUpdateUser(config);
 
-    const handleSubmit = React.useCallback(async (values: FormikValues) => {
+    const handleSubmit = (values: FormikValues) => {
         if (isEdit) updateUser({ body: values, id });
         else createUser(values as any);
-    }, []);
+    };
 
     const formikInitProps = React.useMemo(
         () => ({

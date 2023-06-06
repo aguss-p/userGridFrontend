@@ -15,7 +15,7 @@ const UserForm = (props: Props) => {
         isDetail,
     } = props;
     const theme = useTheme();
-    const { errors, values, setFieldValue } = formik;
+    const { errors, values, setFieldValue, setErrors } = formik;
     console.log('errores', errors);
 
     return (
@@ -35,9 +35,12 @@ const UserForm = (props: Props) => {
                                 fullWidth
                                 type="text"
                                 value={values.username}
-                                onChange={e => setFieldValue('username', e.target.value)}
+                                onChange={e => {
+                                    setFieldValue('username', e.target.value);
+                                    setErrors({ ...errors, username: undefined });
+                                }}
                                 error={errors.username !== undefined}
-                                helperText={errors.username?.toString()}
+                                helperText={errors.username?.toString() || '    '}
                                 placeholder={'Nombre de usuario'}
                                 disabled={isDetail}
                                 inputProps={{
@@ -52,7 +55,10 @@ const UserForm = (props: Props) => {
                                 fullWidth
                                 type="text"
                                 value={values.email}
-                                onChange={e => setFieldValue('email', e.target.value)}
+                                onChange={e => {
+                                    setFieldValue('email', e.target.value);
+                                    setErrors({ ...errors, email: undefined });
+                                }}
                                 error={errors.email !== undefined}
                                 helperText={errors.email?.toString()}
                                 placeholder={'Email'}
@@ -69,12 +75,13 @@ const UserForm = (props: Props) => {
                                 fullWidth
                                 type="text"
                                 value={values.telefono}
-                                onChange={e =>
+                                onChange={e => {
                                     setFieldValue(
                                         'telefono',
                                         e.target.value.replace(telefonoRegex, ''),
-                                    )
-                                }
+                                    );
+                                    setErrors({ ...errors, telefono: undefined });
+                                }}
                                 error={errors.telefono !== undefined}
                                 helperText={errors.telefono?.toString()}
                                 placeholder={'Teléfono'}
