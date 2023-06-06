@@ -1,7 +1,7 @@
 import * as React from 'react';
 import St from './UserForm.styled';
 import { Form, FormikContextType, FormikProvider } from 'formik';
-import { CircularProgress, useTheme } from '@mui/material';
+import { CircularProgress, Stack, useTheme } from '@mui/material';
 
 const UserForm = (props: Props) => {
     const {
@@ -22,7 +22,9 @@ const UserForm = (props: Props) => {
         <>
             {isLoadingGetUser ? (
                 <>
-                    <CircularProgress />
+                    <St.LoaderContainer>
+                        <CircularProgress />
+                    </St.LoaderContainer>
                 </>
             ) : (
                 <FormikProvider value={formik}>

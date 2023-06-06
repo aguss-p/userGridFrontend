@@ -9,7 +9,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 export const useGetUsers = () => {
     const [searchText, setSearchText] = useState('');
-    const queryFilter=useMemo(()=>{
+    const queryFilter:string=useMemo(()=>{
         let extraQueryFilters = '';
         if(searchText!="")
             extraQueryFilters += `?searchText=${searchText}`;
@@ -19,14 +19,12 @@ export const useGetUsers = () => {
         ['users', searchText],
         () => endpoints.getUsers(queryFilter??""),
     );
-    return { data: data?.data, isLoading: (isLoading && isFetching), refetch, isFetched,setSearchText,dataUpdatedAt };
+    return { data: data?.data, isLoading: (isLoading || isFetching), refetch, isFetched,setSearchText,dataUpdatedAt };
 };
 export const useDeleteUser = (id:string) => {
     const { mutateAsync, isLoading,isSuccess} = useMutation(
         ['deleteUser'],
         () => endpoints.deleteUsers(id),
-      
-       
     );
     return { mutate:mutateAsync ,isLoading,isSuccess  };
 };

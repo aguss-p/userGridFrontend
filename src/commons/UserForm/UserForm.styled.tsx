@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Box, Grid, TextField, styled } from '@mui/material';
+import { Box, Grid, Stack, TextField, styled } from '@mui/material';
 
 export default {
     Grid: styled(Grid)(({ theme }) => ({
@@ -7,7 +7,11 @@ export default {
         justifyContent: 'center',
         padding: '3rem 2rem 2rem 2rem',
         gap: 20,
-        // backgroundColor: theme.palette.common.white,
+    })),
+    LoaderContainer: styled(Stack)(({ theme }) => ({
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     })),
     GridForm: styled(Grid)(() => ({
         display: 'grid',
